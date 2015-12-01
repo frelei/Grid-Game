@@ -21,54 +21,39 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
         let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
         borderBody.friction = 0
         borderBody.restitution = 1
-//        borderBody.categoryBitMask = UInt32(Category.WORLD.rawValue)
         self.physicsBody = borderBody
+        self.physicsBody?.categoryBitMask = UInt32(Category.WORLD.rawValue)
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
         
         let ball = childNodeWithName(BallCategoryName) as! SKSpriteNode
-        ball.physicsBody!.applyImpulse(CGVectorMake(100, -100))
-        ball.physicsBody!.contactTestBitMask =   UInt32(Category.WALL_BOTTOM.rawValue)
+        ball.physicsBody!.applyImpulse(CGVectorMake(200, -200))
         
         // Create bottom
         let bottomRect = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 1)
         let bottom = SKNode()
         bottom.physicsBody = SKPhysicsBody(edgeLoopFromRect: bottomRect)
         addChild(bottom)
-
-        // Create Left
-        let leftRect = CGRectMake(frame.origin.x, frame.origin.y,  1, frame.size.height)
-        let left = SKNode()
-        left.physicsBody = SKPhysicsBody(edgeLoopFromRect: leftRect)
-        addChild(left)
-        
-        // Create Right
-        let rightRect = CGRectMake(frame.size.width, frame.origin.y, 1, frame.size.height)
-        let right = SKNode()
-        right.physicsBody = SKPhysicsBody(edgeLoopFromRect: rightRect)
-        addChild(right)
         
         let paddle = childNodeWithName(PaddleCategoryName) as! SKSpriteNode
         
-        
         // Add Categories
         bottom.physicsBody!.categoryBitMask = UInt32(Category.WALL_BOTTOM.rawValue)
-        right.physicsBody!.categoryBitMask = UInt32(Category.BLOCK.rawValue)
-        left.physicsBody!.categoryBitMask = UInt32(Category.BLOCK.rawValue)
         ball.physicsBody!.categoryBitMask = UInt32(Category.BALL.rawValue)
         paddle.physicsBody!.categoryBitMask = UInt32(Category.PADDLE.rawValue)
-        // contact paddle
-//        right.physicsBody?.contactTestBitMask = UInt32(Category.PADDLE.rawValue)
-//        right.physicsBody?.collisionBitMask = UInt32(Category.PADDLE.rawValue)
-        // contact wall
-//        paddle.physicsBody?.contactTestBitMask = UInt32(Category.BLOCK.rawValue)
-        paddle.physicsBody?.collisionBitMask =  UInt32(Category.BLOCK.rawValue)
+        
+        // ball contact
+        ball.physicsBody!.contactTestBitMask =   UInt32(Category.WALL_BOTTOM.rawValue) | UInt32(Category.WORLD.rawValue)
+        // paddle contact
+        paddle.physicsBody?.collisionBitMask =  UInt32(Category.WORLD.rawValue)
+        
+        
+        self.listener = paddle
     }
     
     
     // MARK: TOUCH
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        print("began")
         let touch = touches.first
         let point = touch!.locationInView(self.view)
         let middle = self.frame.height / 2
@@ -76,10 +61,10 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
         
         paddle?.removeAllActions()
         if point.x >= middle{
-            let moveRight = SKAction.moveByX(200.0, y: 0.0, duration: 1.0)
+            let moveRight = SKAction.moveByX(300.0, y: 0.0, duration: 1.0)
             paddle?.runAction(SKAction.repeatActionForever(moveRight))
         }else{
-            let moveLeft = SKAction.moveByX(-200.0, y: 0.0, duration: 1.0)
+            let moveLeft = SKAction.moveByX(-300.0, y: 0.0, duration: 1.0)
             paddle?.runAction(SKAction.repeatActionForever(moveLeft))
         }
     }
@@ -104,23 +89,25 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
         // 3. react to the contact between ball and bottom
         if firstBody.categoryBitMask == UInt32(Category.BALL.rawValue) &&
             secondBody.categoryBitMask == UInt32(Category.WALL_BOTTOM.rawValue) {
-            //TODO: Replace the log statement with display of Game Over Scene
             print("Game Over")
         }
         
         
         if firstBody.categoryBitMask == UInt32(Category.BALL.rawValue) &&
             secondBody.categoryBitMask == UInt32(Category.PADDLE.rawValue){
-               print("Paddle")
+                let ball = childNodeWithName(BallCategoryName)
+                ball?.runAction(SKAction.playSoundFileNamed("ball.wav", waitForCompletion: false))
+                print("Paddle")
+                
         }
         
-//        if firstBody.categoryBitMask == UInt32(Category.PADDLE.rawValue) &&
-//            secondBody.categoryBitMask == UInt32(Category.BLOCK.rawValue){
-//                print("Touch Left")
-//        }
-
-        
-        
+        if firstBody.categoryBitMask == UInt32(Category.WORLD.rawValue) &&
+            secondBody.categoryBitMask == UInt32(Category.BALL.rawValue){
+                let ball = childNodeWithName(BallCategoryName)
+                ball?.runAction(SKAction.playSoundFileNamed("ball.wav", waitForCompletion: false))
+                print("Paddle")
+                print("Word")
+        }
     }
     
     override func update(currentTime: CFTimeInterval) {
