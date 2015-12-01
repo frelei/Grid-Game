@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B840D531C0E4149006244C2 /* JumpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B840D521C0E4149006244C2 /* JumpScene.swift */; };
+		5B840D561C0E41BE006244C2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B840D551C0E41BE006244C2 /* MainViewController.swift */; };
+		5B840D581C0E4342006244C2 /* JumpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B840D571C0E4342006244C2 /* JumpScene.sks */; };
 		5B88238F1C0E331D009D0D63 /* ball.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B88238E1C0E331D009D0D63 /* ball.wav */; };
-		5B97A1D71C0D3CD700E7B4BB /* PaddleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B97A1D61C0D3CD700E7B4BB /* PaddleViewController.swift */; };
 		5B97A1DB1C0D3E3800E7B4BB /* PaddleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B97A1DA1C0D3E3800E7B4BB /* PaddleScene.swift */; };
 		5B97A1DE1C0D651E00E7B4BB /* SpriteKitUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B97A1DD1C0D651E00E7B4BB /* SpriteKitUtil.swift */; };
 		5BAD17BD1C0D1DA0007EC0EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAD17BC1C0D1DA0007EC0EE /* AppDelegate.swift */; };
@@ -31,8 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B840D521C0E4149006244C2 /* JumpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpScene.swift; sourceTree = "<group>"; };
+		5B840D551C0E41BE006244C2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		5B840D571C0E4342006244C2 /* JumpScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = JumpScene.sks; sourceTree = "<group>"; };
 		5B88238E1C0E331D009D0D63 /* ball.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ball.wav; sourceTree = "<group>"; };
-		5B97A1D61C0D3CD700E7B4BB /* PaddleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddleViewController.swift; sourceTree = "<group>"; };
 		5B97A1DA1C0D3E3800E7B4BB /* PaddleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddleScene.swift; sourceTree = "<group>"; };
 		5B97A1DD1C0D651E00E7B4BB /* SpriteKitUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteKitUtil.swift; sourceTree = "<group>"; };
 		5BAD17B91C0D1DA0007EC0EE /* Grid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grid.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,11 +70,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B840D541C0E4197006244C2 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5BAD17C41C0D1DA0007EC0EE /* Main.storyboard */,
+				5B840D551C0E41BE006244C2 /* MainViewController.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		5B88238C1C0E3000009D0D63 /* Paddle */ = {
 			isa = PBXGroup;
 			children = (
 				5BAD17E21C0D3510007EC0EE /* PaddleScene.sks */,
-				5B97A1D61C0D3CD700E7B4BB /* PaddleViewController.swift */,
 				5B97A1DA1C0D3E3800E7B4BB /* PaddleScene.swift */,
 			);
 			name = Paddle;
@@ -84,9 +96,20 @@
 			name = Sound;
 			sourceTree = "<group>";
 		};
+		5B8823901C0E3FD6009D0D63 /* Jump */ = {
+			isa = PBXGroup;
+			children = (
+				5B840D571C0E4342006244C2 /* JumpScene.sks */,
+				5B840D521C0E4149006244C2 /* JumpScene.swift */,
+			);
+			name = Jump;
+			sourceTree = "<group>";
+		};
 		5B97A1D51C0D3C9800E7B4BB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5B840D541C0E4197006244C2 /* Main */,
+				5B8823901C0E3FD6009D0D63 /* Jump */,
 				5B88238C1C0E3000009D0D63 /* Paddle */,
 			);
 			name = Controller;
@@ -125,7 +148,6 @@
 				5B97A1DC1C0D64FB00E7B4BB /* Util */,
 				5B97A1D51C0D3C9800E7B4BB /* Controller */,
 				5BAD17E01C0D2FB3007EC0EE /* Scene */,
-				5BAD17C41C0D1DA0007EC0EE /* Main.storyboard */,
 			);
 			path = Grid;
 			sourceTree = "<group>";
@@ -245,6 +267,7 @@
 				5BAD17C81C0D1DA0007EC0EE /* Assets.xcassets in Resources */,
 				5BAD17E51C0D3538007EC0EE /* MainScene.sks in Resources */,
 				5B88238F1C0E331D009D0D63 /* ball.wav in Resources */,
+				5B840D581C0E4342006244C2 /* JumpScene.sks in Resources */,
 				5BAD17E31C0D3510007EC0EE /* PaddleScene.sks in Resources */,
 				5BAD17C61C0D1DA0007EC0EE /* Main.storyboard in Resources */,
 			);
@@ -264,8 +287,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B840D531C0E4149006244C2 /* JumpScene.swift in Sources */,
 				5B97A1DB1C0D3E3800E7B4BB /* PaddleScene.swift in Sources */,
-				5B97A1D71C0D3CD700E7B4BB /* PaddleViewController.swift in Sources */,
+				5B840D561C0E41BE006244C2 /* MainViewController.swift in Sources */,
 				5BAD17BD1C0D1DA0007EC0EE /* AppDelegate.swift in Sources */,
 				5B97A1DE1C0D651E00E7B4BB /* SpriteKitUtil.swift in Sources */,
 			);
