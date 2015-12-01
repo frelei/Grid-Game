@@ -43,7 +43,7 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
         addChild(left)
         
         // Create Right
-        let rightRect = CGRectMake(frame.size.width - 100, frame.origin.y, 100, frame.size.height/2)
+        let rightRect = CGRectMake(frame.size.width, frame.origin.y, 1, frame.size.height)
         let right = SKNode()
         right.physicsBody = SKPhysicsBody(edgeLoopFromRect: rightRect)
         addChild(right)
@@ -109,15 +109,15 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
         }
         
         
-        if firstBody.categoryBitMask == UInt32(Category.PADDLE.rawValue) &&
-            secondBody.categoryBitMask == UInt32(Category.BLOCK.rawValue){
-               print("Touch Right")
+        if firstBody.categoryBitMask == UInt32(Category.BALL.rawValue) &&
+            secondBody.categoryBitMask == UInt32(Category.PADDLE.rawValue){
+               print("Paddle")
         }
         
-        if firstBody.categoryBitMask == UInt32(Category.PADDLE.rawValue) &&
-            secondBody.categoryBitMask == UInt32(Category.BLOCK.rawValue){
-                print("Touch Left")
-        }
+//        if firstBody.categoryBitMask == UInt32(Category.PADDLE.rawValue) &&
+//            secondBody.categoryBitMask == UInt32(Category.BLOCK.rawValue){
+//                print("Touch Left")
+//        }
 
         
         
