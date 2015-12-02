@@ -15,11 +15,12 @@ class JumpScene: SKScene, SKPhysicsContactDelegate {
     let blockCategoryName = "block"
     let paddleCategoryName = "paddle"
     var oldTime : NSTimeInterval = 0
+    var isJump = false
+    
     
     override func didMoveToView(view: SKView) {
 
         physicsWorld.contactDelegate = self
-        
     
         // Create Walls
         let bottomRect = CGRectMake(frame.origin.x - 300 , frame.origin.y  , frame.size.width + 300, 1)
@@ -50,7 +51,8 @@ class JumpScene: SKScene, SKPhysicsContactDelegate {
         
         // Contact
         paddle.physicsBody?.contactTestBitMask =  UInt32(Category.BLOCK.rawValue)
-
+        paddle.physicsBody?.contactTestBitMask = UInt32(Category.WALL_BOTTOM.rawValue)
+        
         // Colission
         paddle.physicsBody?.collisionBitMask =  UInt32(Category.BLOCK.rawValue)       |
                                                 UInt32(Category.WALL_BOTTOM.rawValue) |
@@ -58,8 +60,28 @@ class JumpScene: SKScene, SKPhysicsContactDelegate {
                                                 UInt32(Category.WALL_RIGHT.rawValue)
         
         block.physicsBody?.collisionBitMask = UInt32(Category.WALL_BOTTOM.rawValue)
+        
+        // SWIPE
+        let swipe = UISwipeGestureRecognizer(target: self, action: "swipe:")
+        swipe.direction = .Up
+        view.addGestureRecognizer(swipe)
 
+        self.listener = paddle
+        
     }
+    
+    // SWIPE GESTURE
+    func swipe(swipe: UISwipeGestureRecognizer){
+        let paddle = childNodeWithName(paddleCategoryName)
+        let block  = childNodeWithName(blockCategoryName)
+        // Check Jump
+        if isJump == false{
+            isJump = true
+            paddle?.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: (block?.frame.size.height)! * 2))
+            paddle?.runAction(SKAction.playSoundFileNamed("jump3.wav", waitForCompletion: false))
+        }
+    }
+    
     
     // MARK: PHISYCS
     func didBeginContact(contact: SKPhysicsContact) {
@@ -77,22 +99,49 @@ class JumpScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
 
+        if firstBody.categoryBitMask == UInt32(Category.PADDLE.rawValue) &&
+            secondBody.categoryBitMask == UInt32(Category.WALL_BOTTOM.rawValue){
+                isJump = false
+                let paddle = childNodeWithName(paddleCategoryName)
+                paddle?.runAction(SKAction.playSoundFileNamed("landing.wav", waitForCompletion: false))
+        }
         
-        print("hit")
-        
-        
+        if firstBody.categoryBitMask == UInt32(Category.PADDLE.rawValue) &&
+            secondBody.categoryBitMask == UInt32(Category.BLOCK.rawValue){
+                // TODO: Call delegate
+              //  print("Game Over")
+        }
     }
     
+    // MARK: TOUCH
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let paddle = childNodeWithName(paddleCategoryName)
+
+        let touch = touches.first
+        let point = touch!.locationInView(self.view)
+        let middle = self.frame.height / 2
+        
+        paddle?.removeAllActions()
+        if point.x >= middle{
+            let moveRight = SKAction.moveByX(300.0, y: 0.0, duration: 1.0)
+            paddle?.runAction(SKAction.repeatActionForever(moveRight))
+        } else {
+            let moveLeft = SKAction.moveByX(-300.0, y: 0.0, duration: 1.0)
+            paddle?.runAction(SKAction.repeatActionForever(moveLeft))
+        }
+    }
     
+    // MARK: UPDATE
     override func update(currentTime: CFTimeInterval) {
         if currentTime  - oldTime > 5{
             oldTime = currentTime
             let block = childNodeWithName(blockCategoryName) as! SKSpriteNode
             let blockTemp = block.copyWithPhysicsBody()
             addChild(blockTemp)
+            
+            // change duration of the time
             let action = SKAction.moveByX(100, y: 0.0, duration: 1.0)
             blockTemp.runAction(SKAction.repeatActionForever(action))
         }
     }
-
 }

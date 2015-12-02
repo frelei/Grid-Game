@@ -24,7 +24,6 @@ struct Category: OptionSetType {
     static let WALL_RIGHT   = Category(rawValue: Int(1 << 6))
     static let WALL_LEFT    = Category(rawValue: Int(1 << 7))
     static let WALL_UP      = Category(rawValue: Int(1 << 8))
-    static let GROUND       = Category(rawValue: Int(1 << 9))
 }
 
 extension SKScene{

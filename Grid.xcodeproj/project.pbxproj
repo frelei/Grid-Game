@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B03E6171C0F14620002BCBC /* jump1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B03E6141C0F14620002BCBC /* jump1.wav */; };
+		5B03E6181C0F14620002BCBC /* jump2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B03E6151C0F14620002BCBC /* jump2.wav */; };
+		5B03E6191C0F14620002BCBC /* jump3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B03E6161C0F14620002BCBC /* jump3.wav */; };
+		5B03E61B1C0F1B920002BCBC /* landing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B03E61A1C0F1B920002BCBC /* landing.wav */; };
 		5B840D531C0E4149006244C2 /* JumpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B840D521C0E4149006244C2 /* JumpScene.swift */; };
 		5B840D561C0E41BE006244C2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B840D551C0E41BE006244C2 /* MainViewController.swift */; };
 		5B840D581C0E4342006244C2 /* JumpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B840D571C0E4342006244C2 /* JumpScene.sks */; };
@@ -33,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B03E6141C0F14620002BCBC /* jump1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump1.wav; sourceTree = "<group>"; };
+		5B03E6151C0F14620002BCBC /* jump2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump2.wav; sourceTree = "<group>"; };
+		5B03E6161C0F14620002BCBC /* jump3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump3.wav; sourceTree = "<group>"; };
+		5B03E61A1C0F1B920002BCBC /* landing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = landing.wav; sourceTree = "<group>"; };
 		5B840D521C0E4149006244C2 /* JumpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpScene.swift; sourceTree = "<group>"; };
 		5B840D551C0E41BE006244C2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5B840D571C0E4342006244C2 /* JumpScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = JumpScene.sks; sourceTree = "<group>"; };
@@ -91,6 +99,10 @@
 		5B88238D1C0E3172009D0D63 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				5B03E61A1C0F1B920002BCBC /* landing.wav */,
+				5B03E6141C0F14620002BCBC /* jump1.wav */,
+				5B03E6151C0F14620002BCBC /* jump2.wav */,
+				5B03E6161C0F14620002BCBC /* jump3.wav */,
 				5B88238E1C0E331D009D0D63 /* ball.wav */,
 			);
 			name = Sound;
@@ -265,9 +277,13 @@
 			files = (
 				5BAD17CB1C0D1DA0007EC0EE /* LaunchScreen.storyboard in Resources */,
 				5BAD17C81C0D1DA0007EC0EE /* Assets.xcassets in Resources */,
+				5B03E61B1C0F1B920002BCBC /* landing.wav in Resources */,
+				5B03E6191C0F14620002BCBC /* jump3.wav in Resources */,
+				5B03E6171C0F14620002BCBC /* jump1.wav in Resources */,
 				5BAD17E51C0D3538007EC0EE /* MainScene.sks in Resources */,
 				5B88238F1C0E331D009D0D63 /* ball.wav in Resources */,
 				5B840D581C0E4342006244C2 /* JumpScene.sks in Resources */,
+				5B03E6181C0F14620002BCBC /* jump2.wav in Resources */,
 				5BAD17E31C0D3510007EC0EE /* PaddleScene.sks in Resources */,
 				5BAD17C61C0D1DA0007EC0EE /* Main.storyboard in Resources */,
 			);
