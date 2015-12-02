@@ -17,6 +17,7 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func didMoveToView(view: SKView) {
+        super.didMoveToView(view)
         // Create Cam
         let borderBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
         borderBody.friction = 0

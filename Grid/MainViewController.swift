@@ -13,6 +13,8 @@ class MainViewController: UIViewController {
 
     
     let paddleScene = PaddleScene(fileNamed: "PaddleScene")
+    let jumpScene = JumpScene(fileNamed: "JumpScene")
+    
     
     // MARK: VC LIFE CYCLE
     override func viewDidLoad() {
@@ -26,9 +28,15 @@ class MainViewController: UIViewController {
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
         
+        
         // Load paddle
-        paddleScene!.scaleMode = .AspectFill
-        skView.presentScene(paddleScene)
+//        paddleScene!.scaleMode = .Fill
+//        skView.presentScene(paddleScene)
+        
+        // Load jump
+        jumpScene?.scaleMode = .AspectFit
+        skView.presentScene(jumpScene)
+        
     }
 
     
