@@ -20,10 +20,12 @@ struct Category: OptionSetType {
     static let BALL         = Category(rawValue: Int(1 << 2))
     static let PADDLE       = Category(rawValue: Int(1 << 3))
     static let BLOCK        = Category(rawValue: Int(1 << 4))
-    static let WALL_BOTTOM  = Category(rawValue: Int(1 << 5))
-    static let WALL_RIGHT   = Category(rawValue: Int(1 << 6))
-    static let WALL_LEFT    = Category(rawValue: Int(1 << 7))
-    static let WALL_UP      = Category(rawValue: Int(1 << 8))
+    static let ENEMY        = Category(rawValue: Int(1 << 5))
+    static let HERO         = Category(rawValue: Int(1 << 6))
+    static let WALL_BOTTOM  = Category(rawValue: Int(1 << 7))
+    static let WALL_RIGHT   = Category(rawValue: Int(1 << 8))
+    static let WALL_LEFT    = Category(rawValue: Int(1 << 9))
+    static let WALL_UP      = Category(rawValue: Int(1 << 10))
 }
 
 extension SKScene{

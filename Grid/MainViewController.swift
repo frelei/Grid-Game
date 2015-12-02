@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
     
     let paddleScene = PaddleScene(fileNamed: "PaddleScene")
     let jumpScene = JumpScene(fileNamed: "JumpScene")
-    
+    let asteroidScene = AsteroidScene(fileNamed: "AsteroidScene")
     
     // MARK: VC LIFE CYCLE
     override func viewDidLoad() {
@@ -30,12 +30,17 @@ class MainViewController: UIViewController {
         
         
         // Load paddle
-//        paddleScene!.scaleMode = .Fill
+//        paddleScene!.scaleMode = .AspectFit
 //        skView.presentScene(paddleScene)
         
         // Load jump
-        jumpScene?.scaleMode = .AspectFit
-        skView.presentScene(jumpScene)
+//        jumpScene?.scaleMode = .AspectFit
+//        skView.presentScene(jumpScene)
+        
+        
+        // Load Asteroid
+        asteroidScene?.scaleMode = .Fill
+        skView.presentScene(asteroidScene)
         
     }
 
