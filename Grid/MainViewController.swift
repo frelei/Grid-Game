@@ -39,7 +39,7 @@ class MainViewController: UIViewController {
         
         
         // Load Asteroid
-        asteroidScene?.scaleMode = .Fill
+        asteroidScene?.scaleMode = .AspectFill
         skView.presentScene(asteroidScene)
         
     }
