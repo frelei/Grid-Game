@@ -14,7 +14,8 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
     // Categorie Names
     let BallCategoryName = "ball"
     let PaddleCategoryName = "paddle"
-    
+    var skViewDelegate: SKViewDelegate?
+    var timer: NSTimer?
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -48,9 +49,18 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
         // paddle contact
         paddle.physicsBody?.collisionBitMask =  UInt32(Category.WORLD.rawValue)
         
-        
         self.listener = paddle
+        
+        // Timer
+        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "changeGameTimer:", userInfo: nil, repeats: false)
     }
+    
+   // MARK: TIMER
+    func changeGameTimer(timer: NSTimer){
+        timer.invalidate()
+        skViewDelegate?.playerLevelUp(self)
+    }
+    
     
     
     // MARK: TOUCH
@@ -90,7 +100,7 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
         // 3. react to the contact between ball and bottom
         if firstBody.categoryBitMask == UInt32(Category.BALL.rawValue) &&
             secondBody.categoryBitMask == UInt32(Category.WALL_BOTTOM.rawValue) {
-            print("Game Over")
+                skViewDelegate?.playerLoose(self)
         }
         
         
@@ -98,16 +108,12 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
             secondBody.categoryBitMask == UInt32(Category.PADDLE.rawValue){
                 let ball = childNodeWithName(BallCategoryName)
                 ball?.runAction(SKAction.playSoundFileNamed("ball.wav", waitForCompletion: false))
-                print("Paddle")
-                
         }
         
         if firstBody.categoryBitMask == UInt32(Category.WORLD.rawValue) &&
             secondBody.categoryBitMask == UInt32(Category.BALL.rawValue){
                 let ball = childNodeWithName(BallCategoryName)
                 ball?.runAction(SKAction.playSoundFileNamed("ball.wav", waitForCompletion: false))
-                print("Paddle")
-                print("Word")
         }
     }
     

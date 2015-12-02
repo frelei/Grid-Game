@@ -9,18 +9,32 @@
 import UIKit
 import SpriteKit
 
-class MainViewController: UIViewController {
+
+protocol SKViewDelegate{
+    func playerLoose(skView: SKScene)
+    func playerLevelUp(skView: SKScene)
+}
+
+
+class MainViewController: UIViewController, SKViewDelegate {
 
     
-    let paddleScene = PaddleScene(fileNamed: "PaddleScene")
-    let jumpScene = JumpScene(fileNamed: "JumpScene")
-    let asteroidScene = AsteroidScene(fileNamed: "AsteroidScene")
+    
+    var level: Float = 0
+    let paddleSceneName = "PaddleScene"
+    let jumpSceneName = "JumpScene"
+    
+    var paddleScene: PaddleScene!
+    var jumpScene: JumpScene!
+//    let asteroidScene = AsteroidScene(fileNamed: "AsteroidScene")
+    
+    var skView: SKView!
     
     // MARK: VC LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let skView = self.view as! SKView
+        skView = self.view as? SKView
+        // Debug
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.showsPhysics = true
@@ -28,20 +42,44 @@ class MainViewController: UIViewController {
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         skView.ignoresSiblingOrder = true
         
+        // Load Scenes
+        paddleScene = PaddleScene(fileNamed: paddleSceneName)
+        jumpScene = JumpScene(fileNamed: jumpSceneName)
+    
+        jumpScene.skViewDelegate = self
+        paddleScene.skViewDelegate = self
         
         // Load paddle
-//        paddleScene!.scaleMode = .AspectFit
-//        skView.presentScene(paddleScene)
+        paddleScene.scaleMode = .AspectFit
+        skView.presentScene(paddleScene)
         
-        // Load jump
-//        jumpScene?.scaleMode = .AspectFit
-//        skView.presentScene(jumpScene)
-        
-        
+        jumpScene.scaleMode = .AspectFit
+
         // Load Asteroid
-        asteroidScene?.scaleMode = .AspectFill
-        skView.presentScene(asteroidScene)
+//        asteroidScene?.scaleMode = .AspectFill
+//        skView!.presentScene(asteroidScene)
+    }
+
+    func playerLoose(skView: SKScene){
+        print(skView.name)
+        if skView.name == paddleSceneName{
+              jumpScene = JumpScene(fileNamed: jumpSceneName)
+              jumpScene.skViewDelegate =  self
+              jumpScene.scaleMode = .AspectFit
+            self.skView.presentScene(jumpScene, transition: SKTransition.doorwayWithDuration(0.5))
+        }else{
+             paddleScene = PaddleScene(fileNamed: paddleSceneName)
+             paddleScene.skViewDelegate = self
+             paddleScene.scaleMode = .AspectFit
+            self.skView.presentScene(paddleScene, transition: SKTransition.doorwayWithDuration(0.5))
+
+        }
         
+    }
+    
+    func playerLevelUp(skView: SKScene){
+        print("Level up")
+
     }
 
     

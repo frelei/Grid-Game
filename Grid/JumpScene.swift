@@ -9,14 +9,16 @@
 import UIKit
 import SpriteKit
 
-class JumpScene: SKScene, SKPhysicsContactDelegate {
+class JumpScene: SKScene, SKPhysicsContactDelegate{
 
     // Categorie Names
     let blockCategoryName = "block"
     let paddleCategoryName = "paddle"
     var oldTime : NSTimeInterval = 0
     var isJump = false
-    
+    var skViewDelegate: SKViewDelegate?
+    var timer : NSTimer?
+    var level : Int?
     
     override func didMoveToView(view: SKView) {
 
@@ -50,8 +52,7 @@ class JumpScene: SKScene, SKPhysicsContactDelegate {
         bottom.physicsBody?.categoryBitMask = UInt32(Category.WALL_BOTTOM.rawValue)
         
         // Contact
-        paddle.physicsBody?.contactTestBitMask =  UInt32(Category.BLOCK.rawValue)
-        paddle.physicsBody?.contactTestBitMask = UInt32(Category.WALL_BOTTOM.rawValue)
+        paddle.physicsBody?.contactTestBitMask =  UInt32(Category.BLOCK.rawValue) | UInt32(Category.WALL_BOTTOM.rawValue)
         
         // Colission
         paddle.physicsBody?.collisionBitMask =  UInt32(Category.BLOCK.rawValue)       |
@@ -68,6 +69,16 @@ class JumpScene: SKScene, SKPhysicsContactDelegate {
 
         self.listener = paddle
         
+        
+        // Timer 
+        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "changeGameTimer:", userInfo: nil, repeats: false)
+    }
+    
+    // TIMER
+    func changeGameTimer(timer: NSTimer){
+        timer.invalidate()
+        // Change phase
+        skViewDelegate?.playerLevelUp(self)
     }
     
     // SWIPE GESTURE
@@ -81,7 +92,6 @@ class JumpScene: SKScene, SKPhysicsContactDelegate {
             paddle?.runAction(SKAction.playSoundFileNamed("jump3.wav", waitForCompletion: false))
         }
     }
-    
     
     // MARK: PHISYCS
     func didBeginContact(contact: SKPhysicsContact) {
@@ -108,8 +118,9 @@ class JumpScene: SKScene, SKPhysicsContactDelegate {
         
         if firstBody.categoryBitMask == UInt32(Category.PADDLE.rawValue) &&
             secondBody.categoryBitMask == UInt32(Category.BLOCK.rawValue){
-                // TODO: Call delegate
-              //  print("Game Over")
+                timer?.invalidate()
+                // GameOver
+                skViewDelegate?.playerLoose(self)
         }
     }
     
@@ -144,4 +155,7 @@ class JumpScene: SKScene, SKPhysicsContactDelegate {
             blockTemp.runAction(SKAction.repeatActionForever(action))
         }
     }
+    
+    
+    
 }
