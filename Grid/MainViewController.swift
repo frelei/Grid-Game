@@ -18,15 +18,14 @@ protocol SKViewDelegate{
 
 class MainViewController: UIViewController, SKViewDelegate {
 
-    
-    
     var level: Float = 0
     let paddleSceneName = "PaddleScene"
     let jumpSceneName = "JumpScene"
+    let shotterSceneName = "ShotterScene"
     
     var paddleScene: PaddleScene!
     var jumpScene: JumpScene!
-//    let asteroidScene = AsteroidScene(fileNamed: "AsteroidScene")
+    var shotterScene: ShotterScene!
     
     var skView: SKView!
     
@@ -44,44 +43,46 @@ class MainViewController: UIViewController, SKViewDelegate {
         
         // Load Scenes
         paddleScene = PaddleScene(fileNamed: paddleSceneName)
-        jumpScene = JumpScene(fileNamed: jumpSceneName)
-    
-        jumpScene.skViewDelegate = self
         paddleScene.skViewDelegate = self
-        
-        // Load paddle
         paddleScene.scaleMode = .AspectFit
         skView.presentScene(paddleScene)
         
-        jumpScene.scaleMode = .AspectFit
+        // Test
+//        shotterScene = ShotterScene(fileNamed: shotterSceneName)
+//        shotterScene.skDelegate = self
+//        shotterScene.scaleMode = .AspectFill
+//        skView.presentScene(shotterScene)
 
-        // Load Asteroid
-//        asteroidScene?.scaleMode = .AspectFill
-//        skView!.presentScene(asteroidScene)
     }
 
     func playerLoose(skView: SKScene){
-        print(skView.name)
-        if skView.name == paddleSceneName{
-              jumpScene = JumpScene(fileNamed: jumpSceneName)
-              jumpScene.skViewDelegate =  self
-              jumpScene.scaleMode = .AspectFit
-            self.skView.presentScene(jumpScene, transition: SKTransition.doorwayWithDuration(0.5))
-        }else{
-             paddleScene = PaddleScene(fileNamed: paddleSceneName)
-             paddleScene.skViewDelegate = self
-             paddleScene.scaleMode = .AspectFit
-            self.skView.presentScene(paddleScene, transition: SKTransition.doorwayWithDuration(0.5))
-
-        }
+        self.changeScene(skView.name!)
         
     }
     
     func playerLevelUp(skView: SKScene){
-        print("Level up")
+        self.changeScene(skView.name!)
 
     }
 
+    func changeScene(sceneName: String){
+        if sceneName == paddleSceneName{
+            jumpScene = JumpScene(fileNamed: jumpSceneName)
+            jumpScene.skViewDelegate =  self
+            jumpScene.scaleMode = .AspectFit
+            self.skView.presentScene(jumpScene, transition: SKTransition.doorwayWithDuration(0.5))
+        }else if sceneName == jumpScene{
+            shotterScene = ShotterScene(fileNamed: shotterSceneName)
+            shotterScene.skDelegate = self
+            shotterScene.scaleMode = .AspectFill
+            self.skView.presentScene(shotterScene, transition: SKTransition.doorwayWithDuration(0.5))
+        }else {
+            paddleScene = PaddleScene(fileNamed: paddleSceneName)
+            paddleScene.skViewDelegate = self
+            paddleScene.scaleMode = .AspectFit
+            self.skView.presentScene(paddleScene, transition: SKTransition.doorwayWithDuration(0.5))
+        }
+    }
     
     
     /*

@@ -156,6 +156,4 @@ class JumpScene: SKScene, SKPhysicsContactDelegate{
         }
     }
     
-    
-    
 }

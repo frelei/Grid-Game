@@ -116,9 +116,5 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
                 ball?.runAction(SKAction.playSoundFileNamed("ball.wav", waitForCompletion: false))
         }
     }
-    
-    override func update(currentTime: CFTimeInterval) {
- //       print("lalala")
-    }
-    
+
 }

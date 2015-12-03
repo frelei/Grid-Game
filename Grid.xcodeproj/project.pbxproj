@@ -13,6 +13,11 @@
 		5B03E61B1C0F1B920002BCBC /* landing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B03E61A1C0F1B920002BCBC /* landing.wav */; };
 		5B03E61E1C0F1C350002BCBC /* AsteroidScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B03E61D1C0F1C350002BCBC /* AsteroidScene.sks */; };
 		5B03E6201C0F1C4C0002BCBC /* AsteroidScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B03E61F1C0F1C4C0002BCBC /* AsteroidScene.swift */; };
+		5B08FDD21C0FB3F2003E11B5 /* ShotterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B08FDD11C0FB3F2003E11B5 /* ShotterScene.swift */; };
+		5B08FDD41C0FB5EA003E11B5 /* ShotterScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B08FDD31C0FB5EA003E11B5 /* ShotterScene.sks */; };
+		5B3885781C0FD8D700DB27D6 /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B3885751C0FD8D700DB27D6 /* explosion.wav */; };
+		5B3885791C0FD8D700DB27D6 /* shot1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B3885761C0FD8D700DB27D6 /* shot1.wav */; };
+		5B38857A1C0FD8D700DB27D6 /* shot2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B3885771C0FD8D700DB27D6 /* shot2.wav */; };
 		5B76AFFA1C0F6820006F5D46 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B76AFF91C0F6820006F5D46 /* Actions.sks */; };
 		5B840D531C0E4149006244C2 /* JumpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B840D521C0E4149006244C2 /* JumpScene.swift */; };
 		5B840D561C0E41BE006244C2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B840D551C0E41BE006244C2 /* MainViewController.swift */; };
@@ -46,6 +51,11 @@
 		5B03E61A1C0F1B920002BCBC /* landing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = landing.wav; sourceTree = "<group>"; };
 		5B03E61D1C0F1C350002BCBC /* AsteroidScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AsteroidScene.sks; sourceTree = "<group>"; };
 		5B03E61F1C0F1C4C0002BCBC /* AsteroidScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidScene.swift; sourceTree = "<group>"; };
+		5B08FDD11C0FB3F2003E11B5 /* ShotterScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotterScene.swift; sourceTree = "<group>"; };
+		5B08FDD31C0FB5EA003E11B5 /* ShotterScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShotterScene.sks; sourceTree = "<group>"; };
+		5B3885751C0FD8D700DB27D6 /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		5B3885761C0FD8D700DB27D6 /* shot1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot1.wav; sourceTree = "<group>"; };
+		5B3885771C0FD8D700DB27D6 /* shot2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot2.wav; sourceTree = "<group>"; };
 		5B76AFF91C0F6820006F5D46 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		5B840D521C0E4149006244C2 /* JumpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpScene.swift; sourceTree = "<group>"; };
 		5B840D551C0E41BE006244C2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +110,15 @@
 			name = Shader;
 			sourceTree = "<group>";
 		};
+		5B08FDD01C0FB3DF003E11B5 /* Shotter */ = {
+			isa = PBXGroup;
+			children = (
+				5B08FDD31C0FB5EA003E11B5 /* ShotterScene.sks */,
+				5B08FDD11C0FB3F2003E11B5 /* ShotterScene.swift */,
+			);
+			name = Shotter;
+			sourceTree = "<group>";
+		};
 		5B76AFF81C0F635D006F5D46 /* Action */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +148,9 @@
 		5B88238D1C0E3172009D0D63 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				5B3885751C0FD8D700DB27D6 /* explosion.wav */,
+				5B3885761C0FD8D700DB27D6 /* shot1.wav */,
+				5B3885771C0FD8D700DB27D6 /* shot2.wav */,
 				5B03E61A1C0F1B920002BCBC /* landing.wav */,
 				5B03E6141C0F14620002BCBC /* jump1.wav */,
 				5B03E6151C0F14620002BCBC /* jump2.wav */,
@@ -150,6 +172,7 @@
 		5B97A1D51C0D3C9800E7B4BB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5B08FDD01C0FB3DF003E11B5 /* Shotter */,
 				5B840D541C0E4197006244C2 /* Main */,
 				5B03E61C1C0F1BFB0002BCBC /* Asteroid */,
 				5B8823901C0E3FD6009D0D63 /* Jump */,
@@ -308,10 +331,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B3885781C0FD8D700DB27D6 /* explosion.wav in Resources */,
 				5BAD17CB1C0D1DA0007EC0EE /* LaunchScreen.storyboard in Resources */,
 				5BAD17C81C0D1DA0007EC0EE /* Assets.xcassets in Resources */,
 				5B03E61B1C0F1B920002BCBC /* landing.wav in Resources */,
+				5B3885791C0FD8D700DB27D6 /* shot1.wav in Resources */,
 				5B03E6191C0F14620002BCBC /* jump3.wav in Resources */,
+				5B08FDD41C0FB5EA003E11B5 /* ShotterScene.sks in Resources */,
+				5B38857A1C0FD8D700DB27D6 /* shot2.wav in Resources */,
 				5B03E6171C0F14620002BCBC /* jump1.wav in Resources */,
 				5BAD17E51C0D3538007EC0EE /* MainScene.sks in Resources */,
 				5B88238F1C0E331D009D0D63 /* ball.wav in Resources */,
@@ -339,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B840D531C0E4149006244C2 /* JumpScene.swift in Sources */,
+				5B08FDD21C0FB3F2003E11B5 /* ShotterScene.swift in Sources */,
 				5B97A1DB1C0D3E3800E7B4BB /* PaddleScene.swift in Sources */,
 				5B840D561C0E41BE006244C2 /* MainViewController.swift in Sources */,
 				5BAD17BD1C0D1DA0007EC0EE /* AppDelegate.swift in Sources */,
