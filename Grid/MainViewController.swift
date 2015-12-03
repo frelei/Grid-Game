@@ -18,7 +18,7 @@ protocol SKViewDelegate{
 
 class MainViewController: UIViewController, SKViewDelegate {
 
-    var level: Float = 0
+    var level: Float = 150
     let paddleSceneName = "PaddleScene"
     let jumpSceneName = "JumpScene"
     let shotterSceneName = "ShotterScene"
@@ -43,6 +43,7 @@ class MainViewController: UIViewController, SKViewDelegate {
         
         // Load Scenes
         paddleScene = PaddleScene(fileNamed: paddleSceneName)
+        paddleScene.level = 200
         paddleScene.skViewDelegate = self
         paddleScene.scaleMode = .AspectFit
         skView.presentScene(paddleScene)
@@ -55,29 +56,33 @@ class MainViewController: UIViewController, SKViewDelegate {
 
     }
 
+    // MARK: DELEGATE LOGIC
     func playerLoose(skView: SKScene){
+        self.level *= 1.005
         self.changeScene(skView.name!)
-        
     }
     
     func playerLevelUp(skView: SKScene){
+        self.level *= 1.005
         self.changeScene(skView.name!)
-
     }
 
     func changeScene(sceneName: String){
         if sceneName == paddleSceneName{
             jumpScene = JumpScene(fileNamed: jumpSceneName)
+            jumpScene.level = Int(self.level)
             jumpScene.skViewDelegate =  self
             jumpScene.scaleMode = .AspectFit
             self.skView.presentScene(jumpScene, transition: SKTransition.doorwayWithDuration(0.5))
-        }else if sceneName == jumpScene{
+        }else if sceneName == jumpSceneName{
             shotterScene = ShotterScene(fileNamed: shotterSceneName)
+            shotterScene.level = Int(self.level)
             shotterScene.skDelegate = self
             shotterScene.scaleMode = .AspectFill
             self.skView.presentScene(shotterScene, transition: SKTransition.doorwayWithDuration(0.5))
         }else {
             paddleScene = PaddleScene(fileNamed: paddleSceneName)
+            paddleScene.level = Int(self.level)
             paddleScene.skViewDelegate = self
             paddleScene.scaleMode = .AspectFit
             self.skView.presentScene(paddleScene, transition: SKTransition.doorwayWithDuration(0.5))

@@ -16,6 +16,8 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
     let PaddleCategoryName = "paddle"
     var skViewDelegate: SKViewDelegate?
     var timer: NSTimer?
+    var level: Int?
+    var stopped: Bool = false
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -29,7 +31,7 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         let ball = childNodeWithName(BallCategoryName) as! SKSpriteNode
-        ball.physicsBody!.applyImpulse(CGVectorMake(200, -200))
+        ball.physicsBody!.applyImpulse(CGVectorMake( CGFloat(level!), -CGFloat(level!)))
         
         // Create bottom
         let bottomRect = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 1)
@@ -46,18 +48,21 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
         
         // ball contact
         ball.physicsBody!.contactTestBitMask =   UInt32(Category.WALL_BOTTOM.rawValue) | UInt32(Category.WORLD.rawValue)
+        
         // paddle contact
         paddle.physicsBody?.collisionBitMask =  UInt32(Category.WORLD.rawValue)
         
         self.listener = paddle
         
         // Timer
-        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "changeGameTimer:", userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(20.0, target: self, selector: "changeGameTimer:", userInfo: nil, repeats: false)
+        
+        print("PADDLE")
     }
     
    // MARK: TIMER
     func changeGameTimer(timer: NSTimer){
-        timer.invalidate()
+        self.timer!.invalidate()
         skViewDelegate?.playerLevelUp(self)
     }
     
@@ -72,10 +77,10 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
         
         paddle?.removeAllActions()
         if point.x >= middle{
-            let moveRight = SKAction.moveByX(300.0, y: 0.0, duration: 1.0)
+            let moveRight = SKAction.moveByX(400.0, y: 0.0, duration: 1.0)
             paddle?.runAction(SKAction.repeatActionForever(moveRight))
         }else{
-            let moveLeft = SKAction.moveByX(-300.0, y: 0.0, duration: 1.0)
+            let moveLeft = SKAction.moveByX(-400.0, y: 0.0, duration: 1.0)
             paddle?.runAction(SKAction.repeatActionForever(moveLeft))
         }
     }
@@ -100,7 +105,11 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
         // 3. react to the contact between ball and bottom
         if firstBody.categoryBitMask == UInt32(Category.BALL.rawValue) &&
             secondBody.categoryBitMask == UInt32(Category.WALL_BOTTOM.rawValue) {
-                skViewDelegate?.playerLoose(self)
+                if stopped == false{
+                    stopped = true
+                    self.timer?.invalidate()
+                    skViewDelegate?.playerLoose(self)
+                }
         }
         
         

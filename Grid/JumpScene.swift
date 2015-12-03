@@ -19,6 +19,7 @@ class JumpScene: SKScene, SKPhysicsContactDelegate{
     var skViewDelegate: SKViewDelegate?
     var timer : NSTimer?
     var level : Int?
+    var stopped :Bool = false
     
     override func didMoveToView(view: SKView) {
 
@@ -69,9 +70,11 @@ class JumpScene: SKScene, SKPhysicsContactDelegate{
 
         self.listener = paddle
         
-        
         // Timer 
-        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "changeGameTimer:", userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(20.0, target: self, selector: "changeGameTimer:", userInfo: nil, repeats: false)
+        
+        
+        print("JUMP")
     }
     
     // TIMER
@@ -118,9 +121,11 @@ class JumpScene: SKScene, SKPhysicsContactDelegate{
         
         if firstBody.categoryBitMask == UInt32(Category.PADDLE.rawValue) &&
             secondBody.categoryBitMask == UInt32(Category.BLOCK.rawValue){
-                timer?.invalidate()
-                // GameOver
-                skViewDelegate?.playerLoose(self)
+                if stopped == false{
+                    stopped = true
+                    self.timer?.invalidate()
+                    skViewDelegate?.playerLoose(self)
+                }
         }
     }
     
@@ -144,14 +149,14 @@ class JumpScene: SKScene, SKPhysicsContactDelegate{
     
     // MARK: UPDATE
     override func update(currentTime: CFTimeInterval) {
-        if currentTime  - oldTime > 5{
+        if currentTime  - oldTime > 3{
             oldTime = currentTime
             let block = childNodeWithName(blockCategoryName) as! SKSpriteNode
             let blockTemp = block.copyWithPhysicsBody()
             addChild(blockTemp)
             
             // change duration of the time
-            let action = SKAction.moveByX(100, y: 0.0, duration: 1.0)
+            let action = SKAction.moveByX(CGFloat(level!), y: 0.0, duration: 1.0)
             blockTemp.runAction(SKAction.repeatActionForever(action))
         }
     }

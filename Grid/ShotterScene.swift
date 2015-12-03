@@ -18,10 +18,12 @@ class ShotterScene: SKScene, SKPhysicsContactDelegate {
     let shotCategoryName = "Shot"
     var distribution: GKRandomDistribution!
     
-    var oldTime : NSTimeInterval = 0
-    var shotTime : NSTimeInterval = 0
+    var oldTime : NSTimeInterval = 0 // control enemies
+    var shotTime : NSTimeInterval = 0 // control shots
     var timer: NSTimer?
     var skDelegate: SKViewDelegate?
+    var level: Int?
+    var stopped: Bool = false
     
     // MARK: MOVE
     override func didMoveToView(view: SKView) {
@@ -69,12 +71,16 @@ class ShotterScene: SKScene, SKPhysicsContactDelegate {
                                              UInt32(Category.WALL_LEFT.rawValue)
         
         // Create Timer
-        timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "changeGameTimer:", userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: "changeGameTimer:", userInfo: nil, repeats: false)
         
         // Random Distribution
         distribution = GKRandomDistribution(lowestValue: 44, highestValue: 1050)
         
         self.listener = self
+        
+        print("SHOTTER ")
+
+        
     }
     
     // MARK: TIMER DELEGATE
@@ -101,12 +107,20 @@ class ShotterScene: SKScene, SKPhysicsContactDelegate {
         
         if firstBody.categoryBitMask == UInt32(Category.ENEMY.rawValue) &&
             secondBody.categoryBitMask == UInt32(Category.WALL_BOTTOM.rawValue) {
-                //         skDelegate?.playerLoose(self)
+                if stopped == false{
+                    stopped = true
+                    self.timer?.invalidate()
+                    skDelegate?.playerLoose(self)
+                }
         }
         
         if firstBody.categoryBitMask == UInt32(Category.ENEMY.rawValue) &&
             secondBody.categoryBitMask == UInt32(Category.HERO.rawValue) {
-                //         skDelegate?.playerLoose(self)
+                if stopped == false{
+                    stopped = true
+                    self.timer?.invalidate()
+                    skDelegate?.playerLoose(self)
+                }
         }
         
         if firstBody.categoryBitMask == UInt32(Category.BLOCK.rawValue) &&
@@ -115,9 +129,7 @@ class ShotterScene: SKScene, SKPhysicsContactDelegate {
                 firstBody.node?.runAction(SKAction.playSoundFileNamed("explosion.wav", waitForCompletion:   false), completion: { () -> Void in
                      firstBody.node?.removeFromParent()
                 })
-
                 secondBody.node?.removeFromParent()
-                
         }
     }
 
@@ -141,7 +153,7 @@ class ShotterScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: UPDATE
     override func update(currentTime: CFTimeInterval) {
-        if currentTime  - oldTime > 5{
+        if currentTime  - oldTime > 3{
             oldTime = currentTime
             let enemy = childNodeWithName(enemyCategoryName) as! SKSpriteNode
             let enemyTemp = enemy.copyWithPhysicsBody()
@@ -149,7 +161,7 @@ class ShotterScene: SKScene, SKPhysicsContactDelegate {
             addChild(enemyTemp)
             
             // change duration of the time
-            let action = SKAction.moveByX(0.0, y: -100, duration: 1.0)
+            let action = SKAction.moveByX(0.0, y: -CGFloat(level!), duration: 1.0)
             enemyTemp.runAction(SKAction.repeatActionForever(action))
         }
         
