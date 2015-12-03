@@ -20,6 +20,7 @@
 		5B38857A1C0FD8D700DB27D6 /* shot2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B3885771C0FD8D700DB27D6 /* shot2.wav */; };
 		5B38857C1C0FE8C400DB27D6 /* Sun.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 5B38857B1C0FE8C400DB27D6 /* Sun.fsh */; };
 		5B76AFFA1C0F6820006F5D46 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B76AFF91C0F6820006F5D46 /* Actions.sks */; };
+		5B7A830E1C10F6AB008968AF /* songback.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B7A830D1C10F6AB008968AF /* songback.mp3 */; };
 		5B840D531C0E4149006244C2 /* JumpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B840D521C0E4149006244C2 /* JumpScene.swift */; };
 		5B840D561C0E41BE006244C2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B840D551C0E41BE006244C2 /* MainViewController.swift */; };
 		5B840D581C0E4342006244C2 /* JumpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B840D571C0E4342006244C2 /* JumpScene.sks */; };
@@ -59,6 +60,7 @@
 		5B3885771C0FD8D700DB27D6 /* shot2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot2.wav; sourceTree = "<group>"; };
 		5B38857B1C0FE8C400DB27D6 /* Sun.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Sun.fsh; sourceTree = "<group>"; };
 		5B76AFF91C0F6820006F5D46 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		5B7A830D1C10F6AB008968AF /* songback.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songback.mp3; sourceTree = "<group>"; };
 		5B840D521C0E4149006244C2 /* JumpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpScene.swift; sourceTree = "<group>"; };
 		5B840D551C0E41BE006244C2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5B840D571C0E4342006244C2 /* JumpScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = JumpScene.sks; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		5B88238D1C0E3172009D0D63 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				5B7A830D1C10F6AB008968AF /* songback.mp3 */,
 				5B3885751C0FD8D700DB27D6 /* explosion.wav */,
 				5B3885761C0FD8D700DB27D6 /* shot1.wav */,
 				5B3885771C0FD8D700DB27D6 /* shot2.wav */,
@@ -344,6 +347,7 @@
 				5B38857A1C0FD8D700DB27D6 /* shot2.wav in Resources */,
 				5B03E6171C0F14620002BCBC /* jump1.wav in Resources */,
 				5BAD17E51C0D3538007EC0EE /* MainScene.sks in Resources */,
+				5B7A830E1C10F6AB008968AF /* songback.mp3 in Resources */,
 				5B88238F1C0E331D009D0D63 /* ball.wav in Resources */,
 				5B76AFFA1C0F6820006F5D46 /* Actions.sks in Resources */,
 				5B38857C1C0FE8C400DB27D6 /* Sun.fsh in Resources */,

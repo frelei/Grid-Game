@@ -57,8 +57,6 @@ class PaddleScene: SKScene, SKPhysicsContactDelegate {
         // Timer
         timer = NSTimer.scheduledTimerWithTimeInterval(20.0, target: self, selector: "changeGameTimer:", userInfo: nil, repeats: false)
         
-        let pattern = SKShader(fileNamed: "Sun.fsh")
-        ball.shader = pattern
     }
     
    // MARK: TIMER
