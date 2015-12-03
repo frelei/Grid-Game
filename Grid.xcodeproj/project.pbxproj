@@ -21,6 +21,8 @@
 		5B38857C1C0FE8C400DB27D6 /* Sun.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 5B38857B1C0FE8C400DB27D6 /* Sun.fsh */; };
 		5B76AFFA1C0F6820006F5D46 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B76AFF91C0F6820006F5D46 /* Actions.sks */; };
 		5B7A830E1C10F6AB008968AF /* songback.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B7A830D1C10F6AB008968AF /* songback.mp3 */; };
+		5B7A83111C110570008968AF /* TouchScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7A83101C110570008968AF /* TouchScene.swift */; };
+		5B7A83131C11059A008968AF /* TouchScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B7A83121C11059A008968AF /* TouchScene.sks */; };
 		5B840D531C0E4149006244C2 /* JumpScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B840D521C0E4149006244C2 /* JumpScene.swift */; };
 		5B840D561C0E41BE006244C2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B840D551C0E41BE006244C2 /* MainViewController.swift */; };
 		5B840D581C0E4342006244C2 /* JumpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B840D571C0E4342006244C2 /* JumpScene.sks */; };
@@ -61,6 +63,8 @@
 		5B38857B1C0FE8C400DB27D6 /* Sun.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Sun.fsh; sourceTree = "<group>"; };
 		5B76AFF91C0F6820006F5D46 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		5B7A830D1C10F6AB008968AF /* songback.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = songback.mp3; sourceTree = "<group>"; };
+		5B7A83101C110570008968AF /* TouchScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchScene.swift; sourceTree = "<group>"; };
+		5B7A83121C11059A008968AF /* TouchScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TouchScene.sks; sourceTree = "<group>"; };
 		5B840D521C0E4149006244C2 /* JumpScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpScene.swift; sourceTree = "<group>"; };
 		5B840D551C0E41BE006244C2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5B840D571C0E4342006244C2 /* JumpScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = JumpScene.sks; sourceTree = "<group>"; };
@@ -132,6 +136,15 @@
 			name = Action;
 			sourceTree = "<group>";
 		};
+		5B7A830F1C110535008968AF /* touch */ = {
+			isa = PBXGroup;
+			children = (
+				5B7A83101C110570008968AF /* TouchScene.swift */,
+				5B7A83121C11059A008968AF /* TouchScene.sks */,
+			);
+			name = touch;
+			sourceTree = "<group>";
+		};
 		5B840D541C0E4197006244C2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +191,7 @@
 		5B97A1D51C0D3C9800E7B4BB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5B7A830F1C110535008968AF /* touch */,
 				5B08FDD01C0FB3DF003E11B5 /* Shotter */,
 				5B840D541C0E4197006244C2 /* Main */,
 				5B03E61C1C0F1BFB0002BCBC /* Asteroid */,
@@ -343,6 +357,7 @@
 				5B03E61B1C0F1B920002BCBC /* landing.wav in Resources */,
 				5B3885791C0FD8D700DB27D6 /* shot1.wav in Resources */,
 				5B03E6191C0F14620002BCBC /* jump3.wav in Resources */,
+				5B7A83131C11059A008968AF /* TouchScene.sks in Resources */,
 				5B08FDD41C0FB5EA003E11B5 /* ShotterScene.sks in Resources */,
 				5B38857A1C0FD8D700DB27D6 /* shot2.wav in Resources */,
 				5B03E6171C0F14620002BCBC /* jump1.wav in Resources */,
@@ -377,6 +392,7 @@
 				5B08FDD21C0FB3F2003E11B5 /* ShotterScene.swift in Sources */,
 				5B97A1DB1C0D3E3800E7B4BB /* PaddleScene.swift in Sources */,
 				5B840D561C0E41BE006244C2 /* MainViewController.swift in Sources */,
+				5B7A83111C110570008968AF /* TouchScene.swift in Sources */,
 				5BAD17BD1C0D1DA0007EC0EE /* AppDelegate.swift in Sources */,
 				5B97A1DE1C0D651E00E7B4BB /* SpriteKitUtil.swift in Sources */,
 				5B03E6201C0F1C4C0002BCBC /* AsteroidScene.swift in Sources */,
