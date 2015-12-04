@@ -13,6 +13,7 @@ import SpriteKit
 protocol SKViewDelegate{
     func playerLoose(skView: SKScene)
     func playerLevelUp(skView: SKScene)
+    func sceneDidEnd(skView: SKScene)
 }
 
 
@@ -22,10 +23,16 @@ class MainViewController: UIViewController, SKViewDelegate {
     let paddleSceneName = "PaddleScene"
     let jumpSceneName = "JumpScene"
     let shotterSceneName = "ShotterScene"
+    let startSceneName = "StartScene"
+    let transitionSceneName = "TransitionSceneName"
     
     var paddleScene: PaddleScene!
     var jumpScene: JumpScene!
     var shotterScene: ShotterScene!
+    var startScene: StartScene!
+    var transitionScene: TransitionScene!
+    
+    var currentScene: String?
     
     var skView: SKView!
     
@@ -33,6 +40,7 @@ class MainViewController: UIViewController, SKViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         skView = self.view as? SKView
+        
         // Debug
         skView.showsFPS = true
         skView.showsNodeCount = true
@@ -48,6 +56,9 @@ class MainViewController: UIViewController, SKViewDelegate {
         paddleScene.scaleMode = .AspectFit
         skView.presentScene(paddleScene)
         
+        
+        
+        
         // Test
 //        shotterScene = ShotterScene(fileNamed: shotterSceneName)
 //        shotterScene.skDelegate = self
@@ -58,15 +69,29 @@ class MainViewController: UIViewController, SKViewDelegate {
 
     // MARK: DELEGATE LOGIC
     func playerLoose(skView: SKScene){
-        self.level *= 1.005
-        self.changeScene(skView.name!)
+        self.currentScene = skView.name
+        self.level *= 1.05
+        // TODO: Check Lives
+        self.transitionScene = TransitionScene(fileNamed: transitionSceneName)
+        self.transitionScene.velocity = "\(self.level)"
+        self.skView.presentScene(self.transitionScene, transition: SKTransition.crossFadeWithDuration(0.5))
+        
     }
     
     func playerLevelUp(skView: SKScene){
-        self.level *= 1.005
-        self.changeScene(skView.name!)
-    }
+        self.currentScene = skView.name
+        self.level *= 1.05
+        self.transitionScene = TransitionScene(fileNamed: transitionSceneName)
+        self.transitionScene.velocity = "\(self.level)"
+        self.skView.presentScene(self.transitionScene, transition: SKTransition.crossFadeWithDuration(0.5))    }
 
+    
+    func sceneDidEnd(skView: SKScene){
+        self.changeScene(self.currentScene!)
+    }
+    
+    
+    // Logic to change scenes
     func changeScene(sceneName: String){
         if sceneName == paddleSceneName{
             jumpScene = JumpScene(fileNamed: jumpSceneName)
