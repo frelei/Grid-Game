@@ -11,7 +11,18 @@ import SpriteKit
 
 class StartScene: SKScene {
 
+    var skDelegate: SKViewDelegate?
     
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let touch = touches.first
+        let positionInScene = touch!.locationInNode(self)
+        let touchedNode = self.nodeAtPoint(positionInScene)
+        
+        if touchedNode.name == "StartLabel" ||
+            touchedNode.name  == "StartBackground"{
+                skDelegate?.sceneDidEnd(self)
+        }
+    }
     
 }

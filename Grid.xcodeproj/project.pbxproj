@@ -11,8 +11,6 @@
 		5B03E6181C0F14620002BCBC /* jump2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B03E6151C0F14620002BCBC /* jump2.wav */; };
 		5B03E6191C0F14620002BCBC /* jump3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B03E6161C0F14620002BCBC /* jump3.wav */; };
 		5B03E61B1C0F1B920002BCBC /* landing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B03E61A1C0F1B920002BCBC /* landing.wav */; };
-		5B03E61E1C0F1C350002BCBC /* AsteroidScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B03E61D1C0F1C350002BCBC /* AsteroidScene.sks */; };
-		5B03E6201C0F1C4C0002BCBC /* AsteroidScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B03E61F1C0F1C4C0002BCBC /* AsteroidScene.swift */; };
 		5B08FDD21C0FB3F2003E11B5 /* ShotterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B08FDD11C0FB3F2003E11B5 /* ShotterScene.swift */; };
 		5B08FDD41C0FB5EA003E11B5 /* ShotterScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B08FDD31C0FB5EA003E11B5 /* ShotterScene.sks */; };
 		5B189FF61C1126B10044A038 /* TransitionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B189FF51C1126B10044A038 /* TransitionScene.swift */; };
@@ -20,6 +18,7 @@
 		5B3885791C0FD8D700DB27D6 /* shot1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B3885761C0FD8D700DB27D6 /* shot1.wav */; };
 		5B38857A1C0FD8D700DB27D6 /* shot2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5B3885771C0FD8D700DB27D6 /* shot2.wav */; };
 		5B38857C1C0FE8C400DB27D6 /* Sun.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 5B38857B1C0FE8C400DB27D6 /* Sun.fsh */; };
+		5B449B161C1139300073E6FC /* achievement1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B449B151C1139300073E6FC /* achievement1.mp3 */; };
 		5B53A8F11C111944002AD95C /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B53A8F01C111944002AD95C /* StartScene.swift */; };
 		5B53A8F31C111994002AD95C /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B53A8F21C111994002AD95C /* StartScene.sks */; };
 		5B53A8F61C111CE5002AD95C /* TransitionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 5B53A8F51C111CE5002AD95C /* TransitionScene.sks */; };
@@ -56,8 +55,6 @@
 		5B03E6151C0F14620002BCBC /* jump2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump2.wav; sourceTree = "<group>"; };
 		5B03E6161C0F14620002BCBC /* jump3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump3.wav; sourceTree = "<group>"; };
 		5B03E61A1C0F1B920002BCBC /* landing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = landing.wav; sourceTree = "<group>"; };
-		5B03E61D1C0F1C350002BCBC /* AsteroidScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AsteroidScene.sks; sourceTree = "<group>"; };
-		5B03E61F1C0F1C4C0002BCBC /* AsteroidScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidScene.swift; sourceTree = "<group>"; };
 		5B08FDD11C0FB3F2003E11B5 /* ShotterScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotterScene.swift; sourceTree = "<group>"; };
 		5B08FDD31C0FB5EA003E11B5 /* ShotterScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ShotterScene.sks; sourceTree = "<group>"; };
 		5B189FF51C1126B10044A038 /* TransitionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionScene.swift; sourceTree = "<group>"; };
@@ -65,6 +62,7 @@
 		5B3885761C0FD8D700DB27D6 /* shot1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot1.wav; sourceTree = "<group>"; };
 		5B3885771C0FD8D700DB27D6 /* shot2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot2.wav; sourceTree = "<group>"; };
 		5B38857B1C0FE8C400DB27D6 /* Sun.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Sun.fsh; sourceTree = "<group>"; };
+		5B449B151C1139300073E6FC /* achievement1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = achievement1.mp3; sourceTree = "<group>"; };
 		5B53A8F01C111944002AD95C /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		5B53A8F21C111994002AD95C /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		5B53A8F51C111CE5002AD95C /* TransitionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TransitionScene.sks; sourceTree = "<group>"; };
@@ -108,15 +106,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5B03E61C1C0F1BFB0002BCBC /* Asteroid */ = {
-			isa = PBXGroup;
-			children = (
-				5B03E61D1C0F1C350002BCBC /* AsteroidScene.sks */,
-				5B03E61F1C0F1C4C0002BCBC /* AsteroidScene.swift */,
-			);
-			name = Asteroid;
-			sourceTree = "<group>";
-		};
 		5B03E6211C0F20290002BCBC /* Shader */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,8 +126,8 @@
 		5B53A8EF1C111922002AD95C /* Start */ = {
 			isa = PBXGroup;
 			children = (
-				5B53A8F01C111944002AD95C /* StartScene.swift */,
 				5B53A8F21C111994002AD95C /* StartScene.sks */,
+				5B53A8F01C111944002AD95C /* StartScene.swift */,
 			);
 			name = Start;
 			sourceTree = "<group>";
@@ -189,6 +178,7 @@
 		5B88238D1C0E3172009D0D63 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				5B449B151C1139300073E6FC /* achievement1.mp3 */,
 				5B7A830D1C10F6AB008968AF /* songback.mp3 */,
 				5B3885751C0FD8D700DB27D6 /* explosion.wav */,
 				5B3885761C0FD8D700DB27D6 /* shot1.wav */,
@@ -214,12 +204,11 @@
 		5B97A1D51C0D3C9800E7B4BB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5B840D541C0E4197006244C2 /* Main */,
 				5B53A8F41C111CCC002AD95C /* Transition */,
 				5B53A8EF1C111922002AD95C /* Start */,
 				5B7A830F1C110535008968AF /* Touch */,
 				5B08FDD01C0FB3DF003E11B5 /* Shotter */,
-				5B840D541C0E4197006244C2 /* Main */,
-				5B03E61C1C0F1BFB0002BCBC /* Asteroid */,
 				5B8823901C0E3FD6009D0D63 /* Jump */,
 				5B88238C1C0E3000009D0D63 /* Paddle */,
 			);
@@ -382,6 +371,7 @@
 				5BAD17C81C0D1DA0007EC0EE /* Assets.xcassets in Resources */,
 				5B03E61B1C0F1B920002BCBC /* landing.wav in Resources */,
 				5B3885791C0FD8D700DB27D6 /* shot1.wav in Resources */,
+				5B449B161C1139300073E6FC /* achievement1.mp3 in Resources */,
 				5B03E6191C0F14620002BCBC /* jump3.wav in Resources */,
 				5B7A83131C11059A008968AF /* TouchScene.sks in Resources */,
 				5B08FDD41C0FB5EA003E11B5 /* ShotterScene.sks in Resources */,
@@ -393,7 +383,6 @@
 				5B38857C1C0FE8C400DB27D6 /* Sun.fsh in Resources */,
 				5B840D581C0E4342006244C2 /* JumpScene.sks in Resources */,
 				5B03E6181C0F14620002BCBC /* jump2.wav in Resources */,
-				5B03E61E1C0F1C350002BCBC /* AsteroidScene.sks in Resources */,
 				5BAD17E31C0D3510007EC0EE /* PaddleScene.sks in Resources */,
 				5BAD17C61C0D1DA0007EC0EE /* Main.storyboard in Resources */,
 				5B53A8F61C111CE5002AD95C /* TransitionScene.sks in Resources */,
@@ -423,7 +412,6 @@
 				5BAD17BD1C0D1DA0007EC0EE /* AppDelegate.swift in Sources */,
 				5B97A1DE1C0D651E00E7B4BB /* SpriteKitUtil.swift in Sources */,
 				5B53A8F11C111944002AD95C /* StartScene.swift in Sources */,
-				5B03E6201C0F1C4C0002BCBC /* AsteroidScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

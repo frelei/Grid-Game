@@ -17,13 +17,15 @@ class TransitionScene: SKScene {
     var skDelegate: SKViewDelegate?
     
     override func didMoveToView(view: SKView) {
+        
         let velocityLabelNode = childNodeWithName(velocityCategoryName) as! SKLabelNode
         velocityLabelNode.text = velocity
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "endTransition", userInfo: nil, repeats: false)
+        SKAction.playSoundFileNamed("achievement1.mp3", waitForCompletion: false)
+        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "endTransition:", userInfo: nil, repeats: false)
     }
     
     func endTransition(timer: NSTimer){
         timer.invalidate()
-        skDelegate?.sceneDidEnd(self)
+        self.skDelegate?.sceneDidEnd(self)
     }
 }
